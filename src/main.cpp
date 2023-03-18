@@ -7,9 +7,7 @@ int main(int argc, char* argv[]) {
     if (!game.Init()) {
         return 1;
     }
-
     game.Run();
-    game.Clean();
 
     return 0;
 }

@@ -5,13 +5,20 @@
 
 class Game {
     public:
+        // Constructor/Destructor
         Game();
         ~Game();
 
+        // Variables
+        double image_x;
+        double image_y;
+
+        // Methods
         bool Init();
         void Run();
         void Draw();
         void Clean();
+        void update(double delta_time);
 
     private:
         bool isRunning;
