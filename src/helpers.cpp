@@ -1,5 +1,5 @@
 #include "SDL2/SDL.h"
-#include "helpers.hpp"
+#include "headers/helpers.hpp"
 #include "iostream"
 
 SDL_Surface *load_surface(char const *path){

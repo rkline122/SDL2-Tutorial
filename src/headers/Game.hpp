@@ -2,29 +2,25 @@
 #define GAME_H
 
 #include <SDL2/SDL.h>
+#include "Player.hpp"
 
 class Game {
     public:
-        // Constructor/Destructor
         Game();
         ~Game();
 
-        // Variables
         double image_x;
         double image_y;
 
-        // Methods
-        bool Init();
-        void Run();
-        void Draw();
-        void Clean();
+        void run();
+        void draw();
         void update(double delta_time);
+        int get_screen_width();
+        int get_screen_height();
 
     private:
         bool isRunning;
-
-        SDL_Surface *image;
-        SDL_Rect    image_position;
+        Player player;
 
         SDL_Window *window;
         SDL_Surface *window_surface;
