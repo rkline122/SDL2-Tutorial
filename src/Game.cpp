@@ -27,8 +27,6 @@ Game::Game() : isRunning(false), window(nullptr){
         SDL_Log("Failed to get the surface from the window: %s", SDL_GetError());
         return;
     }
-
-
 }
 
 Game::~Game(){

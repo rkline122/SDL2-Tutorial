@@ -3,16 +3,22 @@
 #include "headers/Game.hpp"
 #include <iostream>
 
-Player::Player(){
-    image = load_surface("src/Untitled.bmp");
+Player::Player()
+: spritesheet("spritesheet.bmp", 4, 9)
+{
     
     sprite.x = 0;
     sprite.y = 0;
-    sprite.w = 64;
-    sprite.h = 64;
+    sprite.w = 48;
+    sprite.h = 48;
 
     position_x = 0.0;
     position_y = 0.0;
+
+    direction = Direction::NONE;
+
+    spritesheet.select_sprite(0,0);
+
 }
 
 void Player::update(double delta_time, int screen_width, int screen_height){
@@ -45,7 +51,7 @@ void Player::update(double delta_time, int screen_width, int screen_height){
 }
 
 void Player::draw(SDL_Surface *window_surface){
-    SDL_BlitSurface(image, nullptr, window_surface, &sprite);
+    spritesheet.draw_selected_sprite(window_surface, &sprite);
 }
 
 void Player::handle_events(SDL_Event const &event){

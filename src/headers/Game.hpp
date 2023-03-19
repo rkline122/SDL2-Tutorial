@@ -9,9 +9,6 @@ class Game {
         Game();
         ~Game();
 
-        double image_x;
-        double image_y;
-
         void run();
         void draw();
         void update(double delta_time);

@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <SDL2/SDL.h>
+#include "Spritesheet.hpp"
 
 class Player{
 
@@ -13,7 +14,6 @@ class Player{
             DOWN,
             LEFT,
             RIGHT,
-            UP_RIGHT
         };
 
         Player();
@@ -25,9 +25,11 @@ class Player{
 
     private:
 
-        SDL_Surface  *image;
-        SDL_Rect     sprite;
+        Spritesheet  spritesheet;
+        int          spritesheet_column;
         Direction    direction;
+
+        SDL_Rect     sprite;
         double       position_x;
         double       position_y;
 };
