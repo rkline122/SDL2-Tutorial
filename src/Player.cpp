@@ -3,6 +3,12 @@
 #include "headers/Game.hpp"
 #include <iostream>
 
+int const SPRITESHEET_UP = 0;
+int const SPRITESHEET_LEFT = 1;
+int const SPRITESHEET_RIGHT = 2;
+int const SPRITESHEET_DOWN = 3;
+
+
 Player::Player()
 : spritesheet("spritesheet.bmp", 4, 9)
 {
@@ -27,27 +33,42 @@ void Player::update(double delta_time, int screen_width, int screen_height){
         case Direction::NONE:
             position_x += 0.0;
             position_y += 0.0;
+            spritesheet.select_sprite(0,0);
             break;
         case Direction::UP:
-            if(position_y > 0)
-                position_y = position_y - (5.0 * delta_time);
+            if(position_y > 0){
+                position_y = position_y - (MOVEMENT_SPEED * delta_time);
+                spritesheet.select_sprite(spritesheet_column, SPRITESHEET_UP);
+            }
             break;
         case Direction::DOWN:
-            if(position_y < screen_height - sprite.h)
-                position_y = position_y + (5.0 * delta_time);
+            if(position_y < screen_height - sprite.h){
+                position_y = position_y + (MOVEMENT_SPEED * delta_time);
+                spritesheet.select_sprite(spritesheet_column, SPRITESHEET_DOWN);
+            }
             break;
         case Direction::LEFT:
-            if(position_x > 0)
-                position_x = position_x - (5.0 * delta_time);
+            if(position_x > 0){
+                position_x = position_x - (MOVEMENT_SPEED * delta_time);
+                spritesheet.select_sprite(spritesheet_column, SPRITESHEET_LEFT);
+            }
             break;
         case Direction::RIGHT:
-            if(position_x < screen_width - sprite.w)
-                position_x = position_x + (5.0 * delta_time);
+            if(position_x < screen_width - sprite.w){
+                position_x = position_x + (MOVEMENT_SPEED * delta_time);
+                spritesheet.select_sprite(spritesheet_column, SPRITESHEET_RIGHT);
+            }
             break;
     }
 
     sprite.x = position_x;
-    sprite.y = position_y;    
+    sprite.y = position_y;  
+
+    spritesheet_column++;
+
+    if(spritesheet_column > 8){
+        spritesheet_column = 1;
+    }  
 }
 
 void Player::draw(SDL_Surface *window_surface){

@@ -23,6 +23,8 @@ class Player{
         void draw(SDL_Surface *window_surface);
         void handle_events(SDL_Event const &event);
 
+        double       MOVEMENT_SPEED = 10.0;
+
     private:
 
         Spritesheet  spritesheet;
@@ -32,6 +34,7 @@ class Player{
         SDL_Rect     sprite;
         double       position_x;
         double       position_y;
+        
 };
 
 #endif
