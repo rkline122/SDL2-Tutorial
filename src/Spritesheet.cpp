@@ -1,7 +1,7 @@
 #include "headers/Spritesheet.hpp"
 
 Spritesheet::Spritesheet(char const *path, int row, int column){
-    spritesheet_image = load_bmp(path);
+    spritesheet_image = load_image(path);
 
     if (spritesheet_image) {
         clip.w = spritesheet_image->w / column;

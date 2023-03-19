@@ -18,7 +18,7 @@ OBJ = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRC))
 
 # Build executable
 $(TARGET): $(OBJ)
-	$(CC) $^ -o $@ -lSDL2
+	$(CC) $^ -o $@ -lSDL2 -lSDL2_image
 
 # Build object files
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
